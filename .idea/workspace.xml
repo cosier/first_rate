@@ -24,7 +24,7 @@
           <file leaf-file-name="ratable.rb" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lib/first_rate/ratable.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="83" column="44" selection-start="2967" selection-end="2967" vertical-scroll-proportion="0.19710907">
+                <state line="83" column="44" selection-start="2967" selection-end="2967" vertical-scroll-proportion="1.6360053">
                   <folding />
                 </state>
               </provider>
@@ -64,14 +64,13 @@
           <file leaf-file-name="ratable_spec.rb" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/spec/models/ratable_spec.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="2" column="15" selection-start="38" selection-end="38" vertical-scroll-proportion="0.03942181">
+                <state line="234" column="41" selection-start="7602" selection-end="7602" vertical-scroll-proportion="0.49014455">
                   <folding>
                     <element signature="e#154#1212#0" expanded="false" />
                     <element signature="e#1249#2293#0" expanded="false" />
                     <element signature="e#2332#3151#0" expanded="false" />
                     <element signature="e#3184#3835#0" expanded="false" />
                     <element signature="e#3888#4055#0" expanded="false" />
-                    <element signature="e#4217#7261#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -651,21 +650,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/first_rate/ratable.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="44" selection-start="2967" selection-end="2967" vertical-scroll-proportion="0.19710907">
+        <state line="83" column="44" selection-start="2967" selection-end="2967" vertical-scroll-proportion="1.6360053">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/models/ratable_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="15" selection-start="38" selection-end="38" vertical-scroll-proportion="0.03942181">
+        <state line="234" column="41" selection-start="7602" selection-end="7602" vertical-scroll-proportion="0.49014455">
           <folding>
             <element signature="e#154#1212#0" expanded="false" />
             <element signature="e#1249#2293#0" expanded="false" />
             <element signature="e#2332#3151#0" expanded="false" />
             <element signature="e#3184#3835#0" expanded="false" />
             <element signature="e#3888#4055#0" expanded="false" />
-            <element signature="e#4217#7261#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -224,7 +224,7 @@ describe FirstRate::Ratable do
           end
         end
 
-        it "changes #rated_by? to true for reviewer" do
+        it "changes #rated_by? to true for rater" do
           expect {
             @ratable.rate( 3, "Dis my review check it", @rater )
             @ratable.reload
@@ -269,7 +269,7 @@ describe FirstRate::Ratable do
             @rating = @ratable.rate( 2, "Dis my review check it", @rater )
           }
 
-          it "can identify its reviewer" do
+          it "can identify its rater" do
             @rating.rater.should == @rater
           end
         end
