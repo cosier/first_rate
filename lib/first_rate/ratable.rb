@@ -58,6 +58,7 @@ module FirstRate
           rater_id: (rater && rater.id.to_s),
           rater_type: (rater && rater.class.name)
         )
+        old_review = rating.review
         rating.review = review  if review
         unless numeric_rating.nil?
           if rating.valid?
@@ -71,7 +72,7 @@ module FirstRate
           end
           rating.numeric_rating = numeric_rating
         end
-        if !review.nil? && (rating.new_record? || rating.review.nil? ) && rating.valid?
+        if !review.nil? && rating.valid? && (rating.new_record? || old_review.nil? )
           self.inc( :reviews_count, 1 )
         end
         rating.save

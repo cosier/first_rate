@@ -122,36 +122,90 @@ describe FirstRate::Ratable do
         end
       end
 
-
       context "when not anonymous" do
         before {
           @rater = FactoryGirl.create( :rater )
         }
 
         context "the same item a second time" do
-          before {
-            @rating = @ratable.rate( 3, "Dis my review check it", @rater )
-          }
+          context "when already reviewed" do
+            before {
+              @rating = @ratable.rate( 3, "Dis my review check it", @rater )
+            }
 
-          it "doesn't increase number of reviews" do
-            expect {
-              @ratable.rate( 2, "Dis my updated review check it", @rater )
-              @ratable.reload
-            }.not_to change { @ratable.reviews_count }
+            it "doesn't increase number of reviews" do
+              expect {
+                @ratable.rate( 2, "Dis my updated review check it", @rater )
+                @ratable.reload
+              }.not_to change { @ratable.reviews_count }
+            end
+
+            it "updates original review" do
+              expect {
+                @ratable.rate( 2, "Dis my updated review check it", @rater )
+                @rating.reload
+              }.to change { @rating.review }.to ( "Dis my updated review check it" )
+            end
+
+            it "won't update a review to nil" do
+              expect {
+                @ratable.rate( 2, nil, @rater )
+                @rating.reload
+              }.not_to change { @rating.review }
+            end
           end
 
-          it "doesn't increase number of numeric ratings" do
-            expect {
-              @ratable.rate( 2, "Dis my updated review check it", @rater )
-              @ratable.reload
-            }.not_to change { @ratable.numeric_ratings_count }
+          context "when not already reviewed" do
+            before {
+              @rating = @ratable.rate( 3, nil, @rater )
+            }
+
+            it "increases number of reviews" do
+              expect {
+                @ratable.rate( 2, "Dis my updated review check it", @rater )
+                @ratable.reload
+              }.to change { @ratable.reviews_count }.from( 0 ).to 1
+            end
           end
 
-          it "updates original review" do
-            expect {
-              @ratable.rate( 2, "Dis my updated review check it", @rater )
-              @rating.reload
-            }.to change { @rating.review }.to ( "Dis my updated review check it" )
+          context "when already numerically rated" do
+            before {
+              @rating = @ratable.rate( 3, "Dis my review check it", @rater )
+            }
+
+            it "doesn't increase number of numeric ratings" do
+              expect {
+                @ratable.rate( 2, "Dis my updated review check it", @rater )
+                @ratable.reload
+              }.not_to change { @ratable.numeric_ratings_count }
+            end
+
+            it "updates average to 2 instead of 3.5" do
+              expect {
+                @ratable.rate( 2, "Dis my updated review check it", @rater )
+                @ratable.reload
+              }.to change { @ratable.average_rating }.to 2
+            end
+          end
+
+          context "when not already numerically rated" do
+            before {
+              @rating = @ratable.rate( nil, "Dis my review check it", @rater )
+            }
+
+            it "increases number of numeric ratings" do
+              expect {
+                @ratable.rate( 2, "Dis my updated review check it", @rater )
+                @ratable.reload
+              }.to change { @ratable.numeric_ratings_count }.from( 0 ).to 1
+            end
+
+            it "sets average to 2" do
+              expect {
+                @ratable.rate( 2, "Dis my updated review check it", @rater )
+                @ratable.reload
+              }.to change { @ratable.average_rating }.from( nil ).to 2
+            end
           end
         end
 
