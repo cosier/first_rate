@@ -80,6 +80,10 @@ module FirstRate
         return rating
       end
 
+      def rating_for rater
+        self.ratings.by_rater( rater ).first
+      end
+
       def raters type = nil
         rater_ids = []
         self.ratings.each do |rating|

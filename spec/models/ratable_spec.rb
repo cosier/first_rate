@@ -231,6 +231,11 @@ describe FirstRate::Ratable do
           }.to change { @ratable.rated_by?( @rater ) }.to true
         end
 
+        it "returns the correct rating given a rater" do
+          @rating = @ratable.rate( 2, "foo", @rater )
+          @ratable.rating_for( @rater ).should == @rating
+        end
+
         it "adds rater to list of raters" do
           expect {
             @ratable.rate( 3, "Dis my review check it", @rater )
