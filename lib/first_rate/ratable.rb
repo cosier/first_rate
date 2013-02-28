@@ -7,11 +7,19 @@ module FirstRate
     end
     
     def rate! rating, rater = nil, options = {}
+      options = { unique: true }.merge( options )
+      check_type_is_rater( rater && rater.class )
+      if rater && options[:unique] && (existing_rating = rater.rating_for( self ))
+        inc( :rating_total, rating - existing_rating.value )
+        set( :average_rating, self.rating_total.to_f / self.ratings )
+        existing_rating.set( :value, rating )
+        return existing_rating
+      end
       inc( :ratings, 1 )
       inc( :rating_total, rating )
       set( :average_rating, self.rating_total.to_f / self.ratings )
-      check_type_is_rater( rater && rater.class )
-      rater.did_rate( self, rating ) if rater
+      return rater.add_rating_for( self, rating ) if rater
+      return nil
     end
 
     def rated_by type = nil

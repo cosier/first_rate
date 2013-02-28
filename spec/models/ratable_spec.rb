@@ -50,17 +50,45 @@ describe FirstRate::Ratable do
       end      
     end
 
-    context "for the second time" do
+    it "can determine the rater from the rating object" do
+      @ratable.rate!( 2, @rater ).rater.should == @rater
+    end
+
+    context "two separate items" do
+      before {
+        @ratable.rate!( 2, @rater  )
+        @ratable.reload
+        @another_ratable = FactoryGirl.create( :ratable )
+      }
+
+      context "uniquely" do
+        it "increases the raters number of ratings from 1 to 2" do
+          expect {
+            @another_ratable.rate!( 4, @rater )
+            @another_ratable.reload
+          }.to change { @rater.ratings.count }.from( 1 ).to 2
+        end
+      end
+    end
+
+    context "one item twice" do
       before {
         @ratable.rate!( 2, @rater )
       }
 
       context "uniquely" do
-        it "doesn't increase the number of ratings" do
+        it "doesn't increase the item's number of ratings" do
           expect {
             @ratable.rate!( 4, @rater )
             @ratable.reload
           }.not_to change { @ratable.ratings }
+        end
+
+        it "doesn't increase the rater's number of ratings" do
+          expect {
+            @ratable.rate!( 4, @rater )
+            @ratable.reload
+          }.not_to change { @rater.ratings.count }
         end
 
         it "changes the average rating to 4" do
@@ -72,11 +100,18 @@ describe FirstRate::Ratable do
       end
 
       context "non-uniquely" do
-        it "increases the number of ratings to 2" do
+        it "increases the item's number of ratings from 1 to 2" do
           expect {
             @ratable.rate!( 4, @rater, unique: false )
             @ratable.reload
           }.to change { @ratable.ratings }.from( 1 ).to 2
+        end
+
+        it "increases the raters number of ratings from 1 to 2" do
+          expect {
+            @ratable.rate!( 4, @rater, unique: false )
+            @ratable.reload
+          }.to change { @rater.ratings.count }.from( 1 ).to 2
         end
 
         it "changes the average rating to 3" do
@@ -175,6 +210,13 @@ describe FirstRate::Ratable do
             @ratable.rate!( 2, @rater )
             @rater.reload
           }.not_to change { @another_rater.has_rated?( @ratable ) }
+        end
+
+        it "doesn't add the item" do
+          expect {
+            @ratable.rate!( 2, @rater )
+            @rater.reload
+          }.not_to change { @another_rater.items_rated.first }
         end
       end
     end

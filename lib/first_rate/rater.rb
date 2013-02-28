@@ -1,12 +1,12 @@
 module FirstRate
   module Rater
     def self.included base
-      base.embeds_many :ratings, :class_name => "::FirstRate::Rating", :inverse_of => Rating.symbol_for_class( base )
+      base.embeds_many :ratings, :class_name => "::FirstRate::Rating", :inverse_of => FirstRate::Util.symbol_for_class( base )
       base.scope :having_rated, ->( doc ) { base.where( :"ratings.item_id" => doc.id.to_s ) }
       Rating.create_inverse_relationship( base )
     end
 
-    def did_rate doc, value
+    def add_rating_for doc, value
       self.ratings.create!( value: value, item_id: doc.id.to_s, item_class: doc.class.to_s )
     end
 
@@ -16,7 +16,7 @@ module FirstRate
 
     def items_rated type = nil
       return [] if self.ratings.count == 0
-      type ||= Kernel.const_get( self.ratings.first.item_class )
+      type ||= self.ratings.first.item_class.constantize
       item_ids = self.ratings.by_class( type ).collect do |rating|
         rating.item_id
       end
@@ -50,12 +50,9 @@ module FirstRate
 
       def create_inverse_relationship clazz
         @embedded_in_types << clazz
-        self.embedded_in symbol_for_class( clazz ), :class_name => clazz.to_s, :inverse_of => :ratings_lists
+        self.embedded_in FirstRate::Util.symbol_for_class( clazz ), :class_name => clazz.to_s, :inverse_of => :ratings_lists
       end
 
-      def symbol_for_class clazz
-        clazz.to_s.gsub( /(.)([A-Z])/, '\\1_\\2' ).downcase.to_sym
-      end
 
       def default_ratable_type
         @embedded_in_types.first
@@ -64,7 +61,7 @@ module FirstRate
 
     def rater
       self.class.embedded_in_types.each do |clazz|
-        rater = self.send( self.class.symbol_for_class( clazz ) )
+        rater = self.send( FirstRate::Util.symbol_for_class( clazz ) )
         return rater unless rater.nil?
       end
       return nil
@@ -75,7 +72,7 @@ module FirstRate
     end
 
     def doc_class
-      Kernel.const_get( self.rated_type )
+      self.rated_type.constantize
     end
   end
 end
