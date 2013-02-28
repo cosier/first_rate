@@ -59,18 +59,19 @@ module FirstRate
           rater_type: (rater && rater.class.name)
         )
         old_review = rating.review
+        old_numeric_rating = rating.numeric_rating
         rating.review = review  if review
+        rating.numeric_rating = numeric_rating if numeric_rating
         unless numeric_rating.nil?
           if rating.valid?
-            if rating.new_record? || rating.numeric_rating.nil?
+            if rating.new_record? || old_numeric_rating.nil?
               self.inc( :numeric_ratings_count, 1 )
               self.inc( :numeric_ratings_basis, numeric_rating )
             else
-              self.inc( :numeric_ratings_basis, numeric_rating - rating.numeric_rating )
+              self.inc( :numeric_ratings_basis, numeric_rating - old_numeric_rating )
             end
             self.set( :average_rating, self.numeric_ratings_basis / self.numeric_ratings_count )
           end
-          rating.numeric_rating = numeric_rating
         end
         if !review.nil? && rating.valid? && (rating.new_record? || old_review.nil? )
           self.inc( :reviews_count, 1 )
@@ -107,6 +108,13 @@ module FirstRate
       scope :by_rater, ->( rater ) { where( :rater_id => Util.ensure_bson_id( rater ) ) }
 
       validates_presence_of :review, :if => ->( ) { !self.review.nil? }
+
+      validate do
+        if self.numeric_rating.nil? && self.review.nil?
+          errors.add( :numeric_rating, "Either numeric rating or textual review required." )
+          errors.add( :review, "Either numeric rating or textual review required." )
+        end
+      end
 
       def item
         self.class.parent_types.each do |type|

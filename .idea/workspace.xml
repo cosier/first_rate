@@ -24,7 +24,7 @@
           <file leaf-file-name="ratable.rb" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lib/first_rate/ratable.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="74" column="78" selection-start="2723" selection-end="2723" vertical-scroll-proportion="0.68988174">
+                <state line="114" column="0" selection-start="3904" selection-end="3904" vertical-scroll-proportion="0.5519054">
                   <folding />
                 </state>
               </provider>
@@ -64,12 +64,11 @@
           <file leaf-file-name="ratable_spec.rb" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/spec/models/ratable_spec.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="2" column="16" selection-start="39" selection-end="39" vertical-scroll-proportion="0.03942181">
+                <state line="2" column="14" selection-start="37" selection-end="37" vertical-scroll-proportion="0.03942181">
                   <folding>
                     <element signature="e#154#1212#0" expanded="false" />
                     <element signature="e#1249#2293#0" expanded="false" />
                     <element signature="e#2332#3151#0" expanded="false" />
-                    <element signature="e#3184#3835#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -285,40 +284,6 @@
       <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="FirstRate::Reviewable" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
-      <predefined_log_file id="RUBY_RSPEC" enabled="true" />
-      <module name="first_rate" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$/spec/models" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-      <envs>
-        <env name="JRUBY_OPTS" value="-X+O" />
-      </envs>
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$PROJECT_DIR$/spec/models/reviewable_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="FirstRate::Reviewable" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
-      <RunnerSettings RunnerId="RubyDebugRunner" />
-      <RunnerSettings RunnerId="RubyRunner" />
-      <ConfigurationWrapper RunnerId="RubyDebugRunner" />
-      <ConfigurationWrapper RunnerId="RubyRunner" />
-      <method />
-    </configuration>
     <configuration default="false" name="FirstRate::Ratable when rating with an empty review doesn't increase number of reviews" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
       <predefined_log_file id="RUBY_RSPEC" enabled="true" />
       <module name="first_rate" />
@@ -415,6 +380,38 @@
       <ConfigurationWrapper RunnerId="RubyDebugRunner" />
       <method />
     </configuration>
+    <configuration default="false" name="FirstRate::Ratable when rating with neither a rating nor a review doesn't save a rating" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
+      <predefined_log_file id="RUBY_RSPEC" enabled="true" />
+      <module name="first_rate" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$/spec/models" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs>
+        <env name="JRUBY_OPTS" value="-X+O" />
+      </envs>
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$PROJECT_DIR$/spec/models/ratable_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="FirstRate::Ratable when rating with neither a rating nor a review doesn't save a rating" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
+      <RunnerSettings RunnerId="RubyRunner" />
+      <ConfigurationWrapper RunnerId="RubyRunner" />
+      <method />
+    </configuration>
     <configuration default="true" type="RSpecRunConfigurationType" factoryName="RSpec">
       <predefined_log_file id="RUBY_RSPEC" enabled="true" />
       <module name="" />
@@ -487,18 +484,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable" />
-      <item index="1" class="java.lang.String" itemvalue="RSpec.FirstRate::Reviewable" />
-      <item index="2" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable when rating with an empty review doesn't increase number of reviews" />
-      <item index="3" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable when rating when not anonymous the same item a second time when already reviewed updates original review" />
-      <item index="4" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable when rating when not anonymous the same item a second time when not already reviewed increases number of reviews" />
+      <item index="1" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable when rating with an empty review doesn't increase number of reviews" />
+      <item index="2" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable when rating when not anonymous the same item a second time when already reviewed updates original review" />
+      <item index="3" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable when rating when not anonymous the same item a second time when not already reviewed increases number of reviews" />
+      <item index="4" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable when rating with neither a rating nor a review doesn't save a rating" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable" />
-        <item index="1" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable when rating when not anonymous the same item a second time when not already reviewed increases number of reviews" />
-        <item index="2" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable when rating when not anonymous the same item a second time when already reviewed updates original review" />
-        <item index="3" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable when rating with an empty review doesn't increase number of reviews" />
-        <item index="4" class="java.lang.String" itemvalue="RSpec.FirstRate::Reviewable" />
+        <item index="1" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable when rating with neither a rating nor a review doesn't save a rating" />
+        <item index="2" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable when rating when not anonymous the same item a second time when not already reviewed increases number of reviews" />
+        <item index="3" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable when rating when not anonymous the same item a second time when already reviewed updates original review" />
+        <item index="4" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable when rating with an empty review doesn't increase number of reviews" />
       </list>
     </recent_temporary>
   </component>
@@ -651,19 +648,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/first_rate/ratable.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="78" selection-start="2723" selection-end="2723" vertical-scroll-proportion="0.68988174">
+        <state line="114" column="0" selection-start="3904" selection-end="3904" vertical-scroll-proportion="0.5519054">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/models/ratable_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="16" selection-start="39" selection-end="39" vertical-scroll-proportion="0.03942181">
+        <state line="2" column="14" selection-start="37" selection-end="37" vertical-scroll-proportion="0.03942181">
           <folding>
             <element signature="e#154#1212#0" expanded="false" />
             <element signature="e#1249#2293#0" expanded="false" />
             <element signature="e#2332#3151#0" expanded="false" />
-            <element signature="e#3184#3835#0" expanded="false" />
           </folding>
         </state>
       </provider>

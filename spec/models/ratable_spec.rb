@@ -122,6 +122,14 @@ describe FirstRate::Ratable do
         end
       end
 
+      context "with neither a rating nor a review" do
+        it "doesn't save a rating" do
+          expect {
+            @ratable.rate( nil )
+          }.not_to change { @ratable.ratings.count }
+        end
+      end
+
       context "when not anonymous" do
         before {
           @rater = FactoryGirl.create( :rater )
@@ -185,6 +193,13 @@ describe FirstRate::Ratable do
                 @ratable.rate( 2, "Dis my updated review check it", @rater )
                 @ratable.reload
               }.to change { @ratable.average_rating }.to 2
+            end
+
+            it "won't update a review to nil" do
+              expect {
+                @ratable.rate( nil, "new review", @rater )
+                @rating.reload
+              }.not_to change { @rating.numeric_rating }
             end
           end
 
