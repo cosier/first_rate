@@ -72,11 +72,11 @@ describe FirstRate::Ratable do
       end
 
       context "non-uniquely" do
-        it "doesn't increase the number of ratings to 2" do
+        it "increases the number of ratings to 2" do
           expect {
             @ratable.rate!( 4, @rater, unique: false )
             @ratable.reload
-          }.not_to change { @ratable.ratings }
+          }.to change { @ratable.ratings }.from( 1 ).to 2
         end
 
         it "changes the average rating to 3" do

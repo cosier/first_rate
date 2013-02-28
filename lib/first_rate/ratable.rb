@@ -11,11 +11,11 @@ module FirstRate
       inc( :rating_total, rating )
       set( :average_rating, self.rating_total.to_f / self.ratings )
       check_type_is_rater( rater && rater.class )
-      rater.did_rate( self ) if rater
+      rater.did_rate( self, rating ) if rater
     end
 
     def rated_by type = nil
-      type ||= RatingsList.default_ratable_type()
+      type ||= Rating.default_ratable_type()
       return [] unless type
       check_type_is_rater( type )
       type.having_rated( self )

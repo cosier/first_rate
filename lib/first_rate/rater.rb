@@ -1,40 +1,47 @@
 module FirstRate
   module Rater
     def self.included base
-      base.embeds_many :ratings_lists, :class_name => "::FirstRate::RatingsList", :inverse_of => RatingsList.symbol_for_class( base )
-      base.scope :having_rated, ->( doc ) { base.where( :"ratings_lists.rated_ids" => doc.id.to_s ) }
-      RatingsList.create_inverse_relationship( base )
+      base.embeds_many :ratings, :class_name => "::FirstRate::Rating", :inverse_of => Rating.symbol_for_class( base )
+      base.scope :having_rated, ->( doc ) { base.where( :"ratings.item_id" => doc.id.to_s ) }
+      Rating.create_inverse_relationship( base )
     end
 
-    def did_rate doc
-      ratings_list = self.ratings_lists.by_class( doc.class ).first || self.ratings_lists.create!( rated_type: doc.class.to_s )
-      ratings_list.add_to_set( :rated_ids, doc.id.to_s )
+    def did_rate doc, value
+      self.ratings.create!( value: value, item_id: doc.id.to_s, item_class: doc.class.to_s )
     end
 
     def has_rated? doc_or_id
-      ratings_list = self.ratings_lists.having_rated( doc_or_id ).first
-      return !ratings_list.nil?
+      !self.ratings.by_item_id( ensure_bson_id( doc_or_id ) ).empty?
     end
 
     def items_rated type = nil
-      ratings_list = type.nil? ? self.ratings_lists.first : self.ratings_lists.by_class( type ).first
-      return [] unless ratings_list
-      return ratings_list.items
+      return [] if self.ratings.count == 0
+      type ||= Kernel.const_get( self.ratings.first.item_class )
+      item_ids = self.ratings.by_class( type ).collect do |rating|
+        rating.item_id
+      end
+      type.where( :_id.in => item_ids )
+    end
+
+    def rating_for doc_or_id
+      self.ratings.by_item_id( ensure_bson_id( doc_or_id ) ).first
+    end
+
+    def ensure_bson_id doc_or_id
+      doc_or_id = doc_or_id.id if doc_or_id.kind_of?( Mongoid::Document )
+      return doc_or_id.to_s
     end
   end
 
-  class RatingsList
+  class Rating
     include Mongoid::Document
 
-    field :rated_type, type: String
-    field :rated_ids, type: Array, default: []
+    field :value, type: Integer
+    field :item_id, type: String
+    field :item_class, type: String
 
-    scope :by_class, ->( clazz ) { where( :rated_type => clazz.to_s ) }
-    scope :having_rated, ->( doc_or_id ) {
-      doc_or_id = doc_or_id.id if doc_or_id.kind_of?( Mongoid::Document )
-      doc_or_id = doc_or_id.to_s
-      where( :"rated_ids" => doc_or_id )
-    }
+    scope :by_class, ->( clazz ) { where( :item_class => clazz.to_s ) }
+    scope :by_item_id, ->( item_id ) { where( :item_id => item_id ) }
 
     @embedded_in_types = []
 
