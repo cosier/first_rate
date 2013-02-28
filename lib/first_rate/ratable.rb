@@ -88,9 +88,7 @@ module FirstRate
         rater_ids = []
         self.ratings.each do |rating|
           type ||= rating.rater_supertype_const
-          if rating.rater_supertype_const && rating.rater_supertype_const == type
-            rater_ids << rating.rater_id.to_s
-          end
+          rater_ids << rating.rater_id.to_s if rating.rater_id
         end
         return [] if type.nil?
         return type.where( :_id.in => rater_ids )

@@ -15,6 +15,15 @@ class User
   include Mongoid::Document
 end
 
+class User1 < User
+
+end
+
+class User2 < User
+
+end
+
+
 class NotARater
   include Mongoid::Document
 end
@@ -22,5 +31,6 @@ end
 FactoryGirl.define do 
   factory :embedded_ratable, :class => EmbeddedRatableThing
   factory :referenced_ratable, :class => ReferencedRatableThing
-  factory :rater, :class => User
+  factory :rater, :class => User1
+  factory :another_rater, :class => User2
 end

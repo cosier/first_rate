@@ -224,6 +224,23 @@ describe FirstRate::Ratable do
           end
         end
 
+        context "when 2 reviewers of different subtypes" do
+          before {
+            @another_rater = FactoryGirl.create( :another_rater )
+            @ratable.rate( 2, "foo", @rater )
+            @ratable.rate( 4, "derp", @another_rater )
+
+          }
+
+          it "adds both to default list of raters" do
+            @ratable.raters.count.should == 2
+          end
+
+          it "averages their numeric ratings" do
+            @ratable.average_rating.should == 3
+          end
+        end
+
         it "changes #rated_by? to true for rater" do
           expect {
             @ratable.rate( 3, "Dis my review check it", @rater )
