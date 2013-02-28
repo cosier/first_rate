@@ -20,6 +20,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency("mongoid", [">= 3.0.0"])
 
-  s.files        = Dir.glob("lib/**/*") + %w(CHANGELOG.md LICENSE README.md Rakefile)
+  s.files        = Dir.glob("lib/**/*") + %w(CHANGELOG.md LICENSE README.md)
   s.require_path = 'lib'
 end
