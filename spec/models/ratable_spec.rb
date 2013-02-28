@@ -1,224 +1,221 @@
 require 'spec_helper'
 
 describe FirstRate::Ratable do
-  before {
-    @ratable = FactoryGirl.create( :ratable )
-  }
-  
-  context "when rating a 4 as the first rating" do
-    it "increases the number of ratings from 0 to 1" do
-      expect {
-        @ratable.rate!( 4 )
-        @ratable.reload
-      }.to change { @ratable.ratings }.from( 0 ).to 1
-    end      
-    
-    it "sets the average rating from nil to first rating" do
-      expect {
-        @ratable.rate!( 4 )
-        @ratable.reload
-      }.to change { @ratable.average_rating }.from( nil ).to( 4.0 )
-    end    
-    
-    context "then a 2 as the second rating" do
-      before {
-        @ratable.rate!( 4 )        
-      }
-      
-      it "changes the average rating from 4 to 3" do
-        expect {
-          @ratable.rate!( 2 )
-        }.to change { @ratable.average_rating }.from( 4.0 ).to 3.0
+  # Ahh, ruby
+  block = Proc.new do
+    context "when rating" do
+      context "including a review" do
+        it "saves a rating" do
+          expect {
+            @ratable.rate( 3, "Dis da review check it" )
+          }.to change { @ratable.ratings.count }.from( 0 ).to 1
+        end
+
+        it "increases the number of numeric ratings from 0 to 1" do
+          expect {
+            @ratable.rate( 3, "Dis da review check it" )
+            @ratable.reload
+          }.to change { @ratable.numeric_ratings_count }.from( 0 ).to 1
+        end
+
+        it "sets average rating to 3" do
+          expect {
+            @ratable.rate( 3, "Dis da review check it" )
+            @ratable.reload
+          }.to change { @ratable.average_rating }.from( nil ).to 3
+        end
+
+        it "increases number of reviews from 0 to 1" do
+          expect {
+            @ratable.rate( 3, "Dis da review check it" )
+            @ratable.reload
+          }.to change { @ratable.reviews_count }.from( 0 ).to 1
+        end
+
+        it "saves review text" do
+          @ratable.rate( 3, "Dis da review check it" ).review.should == "Dis da review check it"
+        end
+      end
+
+      context "with just a review" do
+        it "saves a rating" do
+          expect {
+            @ratable.rate( nil, "Dis da review check it" )
+          }.to change { @ratable.ratings.count }.from( 0 ).to 1
+        end
+
+        it "doesn't increase the number of numeric ratings" do
+          expect {
+            @ratable.rate( nil, "Dis da review check it" )
+            @ratable.reload
+          }.not_to change { @ratable.numeric_ratings_count }
+        end
+
+        it "doesn't change average rating" do
+          expect {
+            @ratable.rate( nil, "Dis da review check it" )
+            @ratable.reload
+          }.not_to change { @ratable.average_rating }
+        end
+
+        it "increases number of reviews from 0 to 1" do
+          expect {
+            @ratable.rate( nil, "Dis da review check it" )
+            @ratable.reload
+          }.to change { @ratable.reviews_count }.from( 0 ).to 1
+        end
+
+        it "saves review text" do
+          @ratable.rate( nil, "Dis da review check it" ).review.should == "Dis da review check it"
+        end
+      end
+
+      context "with an empty review" do
+        it "doesn't save a rating" do
+          expect {
+            @ratable.rate( 2, "" )
+          }.not_to change { @ratable.ratings.count }
+        end
+
+        it "doesn't increase number of numeric ratings" do
+          expect {
+            @ratable.rate( 2, "" )
+            @ratable.reload
+          }.not_to change { @ratable.numeric_ratings_count }
+        end
+
+        it "doesn't increase number of reviews" do
+          expect {
+            @ratable.rate( 2, "" )
+            @ratable.reload
+          }.not_to change { @ratable.reviews_count }
+        end
+
+        context "using #rate! (bang) " do
+          it "should raise a validation error" do
+            expect {
+              @ratable.rate!( 2, "" )
+            }.to raise_error Mongoid::Errors::Validations
+          end
+        end
+      end
+
+      context "with no review" do
+        it "saves a rating" do
+          expect {
+            @ratable.rate( 3 )
+          }.to change { @ratable.ratings.count }.from( 0 ).to 1
+        end
+
+        it "increases the number of numeric ratings from 0 to 1" do
+          expect {
+            @ratable.rate( 3, "Dis da review check it" )
+            @ratable.reload
+          }.to change { @ratable.numeric_ratings_count }.from( 0 ).to 1
+        end
+
+        it "sets average rating to 3" do
+          expect {
+            @ratable.rate( 3, "Dis da review check it" )
+            @ratable.reload
+          }.to change { @ratable.average_rating }.from( nil ).to 3
+        end
+      end
+
+
+      context "when not anonymous" do
+        before {
+          @rater = FactoryGirl.create( :rater )
+        }
+
+        context "the same item a second time" do
+          before {
+            @rating = @ratable.rate( 3, "Dis my review check it", @rater )
+          }
+
+          it "doesn't increase number of reviews" do
+            expect {
+              @ratable.rate( 2, "Dis my updated review check it", @rater )
+              @ratable.reload
+            }.not_to change { @ratable.reviews_count }
+          end
+
+          it "doesn't increase number of numeric ratings" do
+            expect {
+              @ratable.rate( 2, "Dis my updated review check it", @rater )
+              @ratable.reload
+            }.not_to change { @ratable.numeric_ratings_count }
+          end
+
+          it "updates original review" do
+            expect {
+              @ratable.rate( 2, "Dis my updated review check it", @rater )
+              @rating.reload
+            }.to change { @rating.review }.to ( "Dis my updated review check it" )
+          end
+        end
+
+        it "changes #rated_by? to true for reviewer" do
+          expect {
+            @ratable.rate( 3, "Dis my review check it", @rater )
+            @ratable.reload
+          }.to change { @ratable.rated_by?( @rater ) }.to true
+        end
+
+        it "adds rater to list of raters" do
+          expect {
+            @ratable.rate( 3, "Dis my review check it", @rater )
+            @ratable.reload
+          }.to change { @ratable.raters.first }.from( nil ).to( @rater )
+        end
+
+        it "adds rater to list of raters of that type" do
+          expect {
+            @ratable.rate( 3, "Dis my review check it", @rater )
+            @ratable.reload
+          }.to change { @ratable.raters( @rater.class ).first }.from( nil ).to( @rater )
+        end
+
+        it "doesn't add rater to list of raters of some other type" do
+          expect {
+            @ratable.rate( 3, "Dis my review check it", @rater )
+            @ratable.reload
+          }.not_to change { @ratable.raters( NotARater ).first }
+        end
+
+        it "adds rating to rater's list" do
+          expect {
+            @ratable.rate( 3, "Dis my review check it", @rater )
+            @rater.reload
+          }.to change { @ratable.class.rated_by( @rater ).first }.from( nil ).to( @ratable )
+        end
+
+        describe "the rating" do
+          before {
+            @rating = @ratable.rate( 2, "Dis my review check it", @rater )
+          }
+
+          it "can identify its reviewer" do
+            @rating.rater.should == @rater
+          end
+        end
       end
     end
-  end  
-  
-  context "when rating non-anonymously" do
+  end
+
+  describe "(embedded)" do
     before {
-      @rater = FactoryGirl.create( :rater )
+      @ratable = FactoryGirl.create( :embedded_ratable )
     }
 
-    context "when rater is not a FirstRate::Rater" do
-      before { 
-        @rater = FactoryGirl.create( :bad_rater )
-      }
-      
-      it "throws an ArgumentError" do
-        expect {
-          @ratable.rate!( 2, @rater )
-        }.to raise_error ArgumentError
-      end      
-    end
+    context &block
+  end
 
-    it "can determine the rater from the rating object" do
-      @ratable.rate!( 2, @rater ).rater.should == @rater
-    end
+  describe "(reference)" do
+    before {
+      @ratable = FactoryGirl.create( :referenced_ratable )
+    }
 
-    context "two separate items" do
-      before {
-        @ratable.rate!( 2, @rater  )
-        @ratable.reload
-        @another_ratable = FactoryGirl.create( :ratable )
-      }
-
-      context "uniquely" do
-        it "increases the raters number of ratings from 1 to 2" do
-          expect {
-            @another_ratable.rate!( 4, @rater )
-            @another_ratable.reload
-          }.to change { @rater.ratings.count }.from( 1 ).to 2
-        end
-      end
-    end
-
-    context "one item twice" do
-      before {
-        @ratable.rate!( 2, @rater )
-      }
-
-      context "uniquely" do
-        it "doesn't increase the item's number of ratings" do
-          expect {
-            @ratable.rate!( 4, @rater )
-            @ratable.reload
-          }.not_to change { @ratable.ratings }
-        end
-
-        it "doesn't increase the rater's number of ratings" do
-          expect {
-            @ratable.rate!( 4, @rater )
-            @ratable.reload
-          }.not_to change { @rater.ratings.count }
-        end
-
-        it "changes the average rating to 4" do
-          expect {
-            @ratable.rate!( 4, @rater )
-            @ratable.reload
-          }.to change { @ratable.average_rating }.from( 2 ).to 4
-        end
-      end
-
-      context "non-uniquely" do
-        it "increases the item's number of ratings from 1 to 2" do
-          expect {
-            @ratable.rate!( 4, @rater, unique: false )
-            @ratable.reload
-          }.to change { @ratable.ratings }.from( 1 ).to 2
-        end
-
-        it "increases the raters number of ratings from 1 to 2" do
-          expect {
-            @ratable.rate!( 4, @rater, unique: false )
-            @ratable.reload
-          }.to change { @rater.ratings.count }.from( 1 ).to 2
-        end
-
-        it "changes the average rating to 3" do
-          expect {
-            @ratable.rate!( 4, @rater, unique: false )
-            @ratable.reload
-          }.to change { @ratable.average_rating }.from( 2 ).to 3
-        end
-      end
-    end
-
-    describe "the list of raters" do
-      context "for this item" do
-        it "adds the new rater" do
-          expect {
-            @ratable.rate!( 2, @rater )
-            @ratable.reload
-          }.to change { @ratable.rated_by.first }.from( nil ).to @rater
-        end
-
-        context "for this specific rater model class" do
-          it "adds the new rater" do
-            expect {
-              @ratable.rate!( 2, @rater )
-              @ratable.reload
-            }.to change { @ratable.rated_by( @rater.class ).first }.from( nil ).to @rater
-          end
-        end
-
-        context "for another model class" do
-          it "doesn't add the rater" do
-            expect {
-              @ratable.rate!( 2, @rater )
-              @ratable.reload
-            }.not_to change { @ratable.rated_by( Admin ).first }
-          end
-        end
-      end
-
-      context "for another item" do
-        before {
-          @another_item = FactoryGirl.create( :ratable )
-        }
-
-        it "doesn't add the rater" do
-          expect {
-            @ratable.rate!( 2, @rater )
-            @ratable.reload
-          }.not_to change { @another_item.rated_by.first }
-        end
-      end
-    end
-
-    describe "the list of items rated" do
-      context "for this rater" do
-        it "changes #has_rated? to true" do
-          expect {
-            @ratable.rate!( 2, @rater )
-            @rater.reload
-          }.to change { @rater.has_rated?( @ratable ) }.to true
-        end
-
-        it "adds the item" do
-          expect {
-            @ratable.rate!( 2, @rater )
-            @rater.reload
-          }.to change { @rater.items_rated.first}.from( nil ).to @ratable
-        end
-
-        context "for this specific model class" do
-          it "adds the item" do
-            expect {
-              @ratable.rate!( 2, @rater )
-              @rater.reload
-            }.to change { @rater.items_rated( @ratable.class ).first}.from( nil ).to @ratable
-          end
-        end
-
-        context "for another model class" do
-          it "doesn't add the item" do
-            expect {
-              @ratable.rate!( 2, @rater )
-              @rater.reload
-            }.not_to change { @rater.items_rated( AnotherRatableThing ).first }
-          end
-        end
-      end
-
-      context "for another rater" do
-        before {
-          @another_rater = FactoryGirl.create( :rater )
-        }
-
-        it "doesn't change #has_rated?" do
-          expect {
-            @ratable.rate!( 2, @rater )
-            @rater.reload
-          }.not_to change { @another_rater.has_rated?( @ratable ) }
-        end
-
-        it "doesn't add the item" do
-          expect {
-            @ratable.rate!( 2, @rater )
-            @rater.reload
-          }.not_to change { @another_rater.items_rated.first }
-        end
-      end
-    end
+    context &block
   end
 end

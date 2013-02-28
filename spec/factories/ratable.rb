@@ -1,33 +1,26 @@
 # We should split these up into real model files at spec/models/*.rb and
 # separate factory files.
 
-class RatableThing
+class ReferencedRatableThing
   include Mongoid::Document
-  include FirstRate::Ratable
+  include FirstRate::Ratable::Referenced
 end
 
-class AnotherRatableThing
+class EmbeddedRatableThing
   include Mongoid::Document
-  include FirstRate::Ratable
+  include FirstRate::Ratable::Embedded
 end
 
 class User
   include Mongoid::Document
-  include FirstRate::Rater
 end
 
-class Admin
-  include Mongoid::Document
-  include FirstRate::Rater
-end
-
-class NonRater
+class NotARater
   include Mongoid::Document
 end
 
 FactoryGirl.define do 
-  factory :ratable, :class => RatableThing
+  factory :embedded_ratable, :class => EmbeddedRatableThing
+  factory :referenced_ratable, :class => ReferencedRatableThing
   factory :rater, :class => User
-  factory :admin_rater, :class => Admin
-  factory :bad_rater, :class => NonRater
 end

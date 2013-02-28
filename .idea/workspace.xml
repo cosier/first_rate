@@ -21,46 +21,19 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="rater.rb" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/lib/first_rate/rater.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="52" column="8" selection-start="1582" selection-end="1582" vertical-scroll-proportion="-20.48">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ratable.rb" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="ratable.rb" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lib/first_rate/ratable.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="11" column="18" selection-start="406" selection-end="406" vertical-scroll-proportion="0.0">
+                <state line="126" column="36" selection-start="4222" selection-end="4222" vertical-scroll-proportion="0.50722736">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ratable.rb" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/spec/factories/ratable.rb">
+          <file leaf-file-name="util.rb" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/lib/first_rate/util.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="13" column="0" selection-start="269" selection-end="269" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="reviewable.rb" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/lib/first_rate/reviewable.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="67" column="10" selection-start="1806" selection-end="1806" vertical-scroll-proportion="0.92115635">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="reviewable.rb" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/spec/factories/reviewable.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="14" column="69" selection-start="348" selection-end="373" vertical-scroll-proportion="0.0">
+                <state line="17" column="37" selection-start="374" selection-end="374" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -70,30 +43,21 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="ratable_spec.rb" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="ratable_spec.rb" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/spec/models/ratable_spec.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="41" column="87" selection-start="1063" selection-end="1063" vertical-scroll-proportion="0.29303548">
+                <state line="22" column="21" selection-start="679" selection-end="679" vertical-scroll-proportion="-2.6268067">
                   <folding>
-                    <element signature="e#166#881#0" expanded="false" />
+                    <element signature="e#3184#3835#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="util.rb" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/lib/first_rate/util.rb">
+          <file leaf-file-name="example_group.rb" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/rspec-core-2.13.0/lib/rspec/core/example_group.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="5" column="27" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="reviewable_spec.rb" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/spec/models/reviewable_spec.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="31" column="0" selection-start="729" selection-end="729" vertical-scroll-proportion="0.0">
+                <state line="227" column="0" selection-start="8880" selection-end="8880" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -112,15 +76,15 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/spec/spec_helper.rb" />
-        <option value="$PROJECT_DIR$/spec/factories/ratable.rb" />
-        <option value="$PROJECT_DIR$/lib/first_rate/ratable.rb" />
-        <option value="$PROJECT_DIR$/spec/factories/reviewable.rb" />
-        <option value="$PROJECT_DIR$/lib/first_rate.rb" />
-        <option value="$PROJECT_DIR$/spec/models/ratable_spec.rb" />
-        <option value="$PROJECT_DIR$/lib/first_rate/util.rb" />
         <option value="$PROJECT_DIR$/lib/first_rate/rater.rb" />
+        <option value="$PROJECT_DIR$/spec/factories/reviewable.rb" />
         <option value="$PROJECT_DIR$/spec/models/reviewable_spec.rb" />
         <option value="$PROJECT_DIR$/lib/first_rate/reviewable.rb" />
+        <option value="$PROJECT_DIR$/lib/first_rate.rb" />
+        <option value="$PROJECT_DIR$/spec/factories/ratable.rb" />
+        <option value="$PROJECT_DIR$/spec/models/ratable_spec.rb" />
+        <option value="$PROJECT_DIR$/lib/first_rate/util.rb" />
+        <option value="$PROJECT_DIR$/lib/first_rate/ratable.rb" />
       </list>
     </option>
   </component>
@@ -265,7 +229,7 @@
     <property name="recentsLimit" value="5" />
     <property name="GoToClass.includeJavaFiles" value="false" />
   </component>
-  <component name="RunManager" selected="RSpec.FirstRate::Reviewable">
+  <component name="RunManager" selected="RSpec.FirstRate::Ratable">
     <configuration default="false" name="FirstRate::Ratable" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
       <predefined_log_file id="RUBY_RSPEC" enabled="true" />
       <module name="first_rate" />
@@ -297,38 +261,6 @@
       <RunnerSettings RunnerId="RubyDebugRunner" />
       <RunnerSettings RunnerId="RubyRunner" />
       <ConfigurationWrapper RunnerId="RubyDebugRunner" />
-      <ConfigurationWrapper RunnerId="RubyRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="FirstRate::Ratable when rating non-anonymously can determine the rater from the rating object" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
-      <predefined_log_file id="RUBY_RSPEC" enabled="true" />
-      <module name="first_rate" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$/spec/models" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-      <envs>
-        <env name="JRUBY_OPTS" value="-X+O" />
-      </envs>
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$PROJECT_DIR$/spec/models/ratable_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="FirstRate::Ratable when rating non-anonymously can determine the rater from the rating object" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
-      <RunnerSettings RunnerId="RubyRunner" />
       <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
     </configuration>
@@ -430,6 +362,38 @@
       <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
     </configuration>
+    <configuration default="false" name="FirstRate::Ratable when rating with an empty review doesn't increase number of reviews" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
+      <predefined_log_file id="RUBY_RSPEC" enabled="true" />
+      <module name="first_rate" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$/spec/models" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs>
+        <env name="JRUBY_OPTS" value="-X+O" />
+      </envs>
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$PROJECT_DIR$/spec/models/ratable_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="FirstRate::Ratable when rating with an empty review doesn't increase number of reviews" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
+      <RunnerSettings RunnerId="RubyDebugRunner" />
+      <ConfigurationWrapper RunnerId="RubyDebugRunner" />
+      <method />
+    </configuration>
     <configuration default="true" type="RSpecRunConfigurationType" factoryName="RSpec">
       <predefined_log_file id="RUBY_RSPEC" enabled="true" />
       <module name="" />
@@ -502,18 +466,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable" />
-      <item index="1" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable when rating non-anonymously can determine the rater from the rating object" />
-      <item index="2" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable when rating non-anonymously when rater is not a FirstRate::Rater throws an ArgumentError" />
-      <item index="3" class="java.lang.String" itemvalue="RSpec.FirstRate::Reviewable via embedded reviews" />
-      <item index="4" class="java.lang.String" itemvalue="RSpec.FirstRate::Reviewable" />
+      <item index="1" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable when rating non-anonymously when rater is not a FirstRate::Rater throws an ArgumentError" />
+      <item index="2" class="java.lang.String" itemvalue="RSpec.FirstRate::Reviewable via embedded reviews" />
+      <item index="3" class="java.lang.String" itemvalue="RSpec.FirstRate::Reviewable" />
+      <item index="4" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable when rating with an empty review doesn't increase number of reviews" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="RSpec.FirstRate::Reviewable" />
-        <item index="1" class="java.lang.String" itemvalue="RSpec.FirstRate::Reviewable via embedded reviews" />
-        <item index="2" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable" />
-        <item index="3" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable when rating non-anonymously when rater is not a FirstRate::Rater throws an ArgumentError" />
-        <item index="4" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable when rating non-anonymously can determine the rater from the rating object" />
+        <item index="0" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable" />
+        <item index="1" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable when rating with an empty review doesn't increase number of reviews" />
+        <item index="2" class="java.lang.String" itemvalue="RSpec.FirstRate::Reviewable" />
+        <item index="3" class="java.lang.String" itemvalue="RSpec.FirstRate::Reviewable via embedded reviews" />
+        <item index="4" class="java.lang.String" itemvalue="RSpec.FirstRate::Ratable when rating non-anonymously when rater is not a FirstRate::Rater throws an ArgumentError" />
       </list>
     </recent_temporary>
   </component>
@@ -598,18 +562,7 @@
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/spec/models/reviewable_spec.rb</url>
-          <line>39</line>
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/lib/first_rate/reviewable.rb</url>
-          <line>36</line>
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/spec/spec_helper.rb">
@@ -628,66 +581,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/first_rate.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="24" selection-start="130" selection-end="130" vertical-scroll-proportion="0.08797654">
+        <state line="2" column="0" selection-start="47" selection-end="47" vertical-scroll-proportion="0.037546933">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/first_rate/util.rb">
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/rspec-core-2.13.0/lib/rspec/core/example_group.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="27" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0">
+        <state line="227" column="0" selection-start="8880" selection-end="8880" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/mongoid-3.1.2/lib/mongoid/persistence/atomic.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="0" selection-start="2988" selection-end="2988" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/factories/ratable.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="269" selection-end="269" vertical-scroll-proportion="0.0">
+        <state line="10" column="39" selection-start="296" selection-end="296" vertical-scroll-proportion="0.18773466">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/first_rate/util.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="37" selection-start="374" selection-end="374" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/first_rate/ratable.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="18" selection-start="406" selection-end="406" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/first_rate/rater.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="8" selection-start="1582" selection-end="1582" vertical-scroll-proportion="-20.48">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/models/reviewable_spec.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="729" selection-end="729" vertical-scroll-proportion="0.0">
+        <state line="126" column="36" selection-start="4222" selection-end="4222" vertical-scroll-proportion="0.50722736">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/models/ratable_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="87" selection-start="1063" selection-end="1063" vertical-scroll-proportion="0.29303548">
+        <state line="22" column="21" selection-start="679" selection-end="679" vertical-scroll-proportion="-2.6268067">
           <folding>
-            <element signature="e#166#881#0" expanded="false" />
+            <element signature="e#3184#3835#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/factories/reviewable.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="69" selection-start="348" selection-end="373" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/first_rate/reviewable.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="10" selection-start="1806" selection-end="1806" vertical-scroll-proportion="0.92115635">
-          <folding />
         </state>
       </provider>
     </entry>
