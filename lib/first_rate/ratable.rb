@@ -101,6 +101,7 @@ module FirstRate
 
     class Rating
       include Mongoid::Document
+      include Mongoid::Timestamps
 
       field :rater_id, type: String
       field :rater_type, type: String
